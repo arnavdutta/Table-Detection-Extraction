@@ -24,7 +24,7 @@ def table_detection(img_path):
     table_segment = cv2.erode(cv2.bitwise_not(table_segment), kernel, iterations=2)
     thresh, table_segment = cv2.threshold(table_segment, 0, 255, cv2.THRESH_OTSU)
    
-    _, contours, hierarchy = cv2.findContours(table_segment, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    contours, hierarchy = cv2.findContours(table_segment, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     count = 0
     for c in contours:
         x, y, w, h = cv2.boundingRect(c)
